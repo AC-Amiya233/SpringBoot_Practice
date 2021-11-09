@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.usrcontrol.usrinfo.mapper.UserMapper">
+    <select id="findAll" resultType="com.usrcontrol.usrinfo.entity.User">
+        SELECT * FROM tb.tb_user
+    </select>
+
+    <select id="findById" resultType="com.usrcontrol.usrinfo.entity.User" parameterType="Long">
+        SELECT * FROM tb.tb_user WHERE tb.tb_usr.id = #{id}
+    </select>
+
+    <insert id="create" parameterType="com.usrcontrol.usrinfo.entity.User">
+        INSERT INTO tb.tb_user(username, password) VALUES (#{username}, #{password})
+    </insert>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM tb.tb_user WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.usrcontrol.usrinfo.entity.User">
+        UPDATE tb.tb_user SET WHERE 1=1
+        <if test="username != null">
+            username = #{username}
+        </if>
+        <if test="password != null">
+            password = #{password}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <select id="findByName" parameterType="String" resultType="com.usrcontrol.usrinfo.entity.User">
+        SELECT * FROM tb.tb_user WHERE username = #{username}
+    </select>
+</mapper>
